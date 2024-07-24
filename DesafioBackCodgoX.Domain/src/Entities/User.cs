@@ -9,7 +9,10 @@ namespace DesafioBackCodgoX.Domain.Entities
         public string Id { get; set; }
 
         [StringLength(100)]
-        public string Name { get; set; }
+        public string FisrtName { get; set; }
+
+        [StringLength(100)]
+        public string LastName { get; set; }
 
         [StringLength(255)]
         public string Email { get; set; }

@@ -28,7 +28,8 @@ namespace DesafioBackCodgoX.Infrastructure.Repositories
             var existingUser = Users.FirstOrDefault(u => u.Id == id);
             if (existingUser != null)
             {
-                existingUser.Name = user.Name;
+                existingUser.FisrtName = user.FisrtName;
+                existingUser.LastName = user.LastName;
                 existingUser.Email = user.Email;
                 existingUser.Password = user.Password;
             }
