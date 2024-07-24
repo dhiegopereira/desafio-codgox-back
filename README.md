@@ -17,7 +17,7 @@ dotnet run
 Implementar o endpoint que recebe o parâmetro email e retorna o nome e sobrenome
 - Deve ser criado endpoint 
 
-> POST /api/user?email=jose@gmail.com
+> GET /api/user?email=jose@gmail.com
 
 - Exemplo de resposta:
 ```json
