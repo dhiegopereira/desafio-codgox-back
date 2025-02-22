@@ -1,0 +1,29 @@
+root = true
+
+# Define as regras para todos os arquivos C#
+[*.cs]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Regras específicas para arquivos JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Regras para arquivos de configuração XML
+[*.xml]
+indent_style = space
+indent_size = 2
+
+# Configuração para arquivos de projeto (.csproj)
+[*.csproj]
+indent_style = space
+indent_size = 2
+
+# Configuração para arquivos de configuração do Visual Studio (.sln)
+[*.sln]
+indent_style = space
+indent_size = 4

@@ -1,6 +1,0 @@
-@DesafioBackCodgoX.Api_HostAddress = http://localhost:5030
-
-GET {{DesafioBackCodgoX.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,11 +1,11 @@
-DesafioBackCodgoX.Api/bin
-DesafioBackCodgoX.Api/obj
+ManageCustomer.Api/bin
+ManageCustomer.Api/obj
 
-DesafioBackCodgoX.Application/bin
-DesafioBackCodgoX.Application/obj
+ManageCustomer.Application/bin
+ManageCustomer.Application/obj
 
-DesafioBackCodgoX.Domain/bin
-DesafioBackCodgoX.Domain/obj
+ManageCustomer.Domain/bin
+ManageCustomer.Domain/obj
 
-DesafioBackCodgoX.Infrastructure/bin
-DesafioBackCodgoX.Infrastructure/obj
+ManageCustomer.Infrastructure/bin
+ManageCustomer.Infrastructure/obj

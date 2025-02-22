@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  manager_customer:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: manager_customer
+    restart: always
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "5030:5030"
+    environment:
+      - ASPNETCORE_URLS=http://+:5030
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    command: >
+      sh -c "
+      export PATH=\"$PATH:/root/.dotnet/tools\" && \
+      dotnet tool install --global dotnet-ef && \
+      dotnet ef migrations add InitializeTables --project ManageCustomer.Infrastructure --startup-project ManageCustomer.Api || true && \
+      dotnet ef database update --project ManageCustomer.Infrastructure --startup-project ManageCustomer.Api && \
+      dotnet restore && \
+      dotnet build ManageCustomer.Api && \
+      dotnet run --project ManageCustomer.Api
+      "
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_container
+    restart: always
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+volumes:
+  sqlserver_data:
