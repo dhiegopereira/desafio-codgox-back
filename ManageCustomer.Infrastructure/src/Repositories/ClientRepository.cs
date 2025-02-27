@@ -16,7 +16,7 @@ namespace ManageCustomer.Infrastructure.Repositories
 
         public async Task<Customer> GetByIdAsync(long id)
         {
-            var customer = await context.Customer.FirstOrDefaultAsync(u => u.Id == id);
+            var customer = await context.Customer.FirstOrDefaultAsync(c => c.Id == id);
             if (customer == null)
             {
                 throw new Exception("Customer not found");
@@ -53,7 +53,6 @@ namespace ManageCustomer.Infrastructure.Repositories
             existingCustomer.Telefone = customer.Telefone;
             existingCustomer.DataNascimento = customer.DataNascimento;
 
-            // Salva as alterações
             await context.SaveChangesAsync();
         }
 

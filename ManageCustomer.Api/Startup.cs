@@ -38,14 +38,23 @@ public class Startup
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "ManageCustomer.Api", Version = "v1" });
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            if (File.Exists(xmlPath))
+            c.SwaggerDoc("v1", new OpenApiInfo
             {
-                c.IncludeXmlComments(xmlPath);
-            }
+                Title = "ManageCustomer.Api",
+                Version = "v1",
+                Description = "API para gerenciamento de clientes",
+                Contact = new OpenApiContact
+                {
+                    Name = "Diego",
+                    Email = "seuemail@exemplo.com"
+                }
+            });
+
+            c.EnableAnnotations();
+            c.UseAllOfForInheritance();
         });
+
+
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -62,14 +71,15 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-        app.UseRouting();
-
+        
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
             c.SwaggerEndpoint("/swagger/v1/swagger.json", "ManageCustomer API v1");
+            c.RoutePrefix = string.Empty;
         });
 
+        app.UseRouting();
         app.UseCors("AllowAll");
 
         app.UseEndpoints(endpoints =>
@@ -77,4 +87,5 @@ public class Startup
             endpoints.MapControllers();
         });
     }
+
 }
