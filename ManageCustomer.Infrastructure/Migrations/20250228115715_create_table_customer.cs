@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ManageCustomer.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class createtablecustomer : Migration
+    public partial class create_table_customer : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
