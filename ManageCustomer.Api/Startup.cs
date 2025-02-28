@@ -27,22 +27,34 @@ public class Startup
 
 
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+       
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Manage Customer API",
+                Version = "v1",
+                Description = "API de Gerenciamento de Clientes",
+                Contact = new OpenApiContact
+                {
+                    Name = "Suporte",
+                    Email = "suporte@empresa.com"
+                }
+            });
+        });
 
     }
 
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseHttpsRedirection();
-        app.UseStaticFiles();
         
         app.UseCors("AllowAllOrigins");
 
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Guia Local API v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Manage Customer API");
         });
 
         app.UseRouting();
